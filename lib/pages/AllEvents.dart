@@ -26,12 +26,13 @@ class _AllEventsState extends State<AllEvents> {
 
     QuerySnapshot qn= await firestoreInstance.collection("events").getDocuments();
 //    print(qn.documents[0]);
+
     return qn.documents;
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("All Events"),),
+      appBar: header(context,strTitle: "All Events"),
       body: Container(
         child: FutureBuilder(future:getEvents() ,builder: (_, snapshot){
           if (snapshot.connectionState==ConnectionState.waiting)
@@ -45,7 +46,7 @@ class _AllEventsState extends State<AllEvents> {
             return ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (_,index){
-                  DateTime myDateTime = DateTime.parse(snapshot.data[index].data["date"].toDate().toString());
+                  DateTime myDateTime = DateTime.parse(snapshot.data[index].data["startdate"].toDate().toString());
                   return new Card(
                       shape: RoundedRectangleBorder(
                         side: BorderSide(color: Colors.white70, width: 1),
@@ -103,7 +104,7 @@ class _AllEventsState extends State<AllEvents> {
                                   child:Text('Register'),
                                   color:Colors.yellow,
                                   onPressed:() {
-                                    final event= EventDetails(date:snapshot.data[index].data["date"],desc:snapshot.data[index].data["description"],organizer:snapshot.data[index].data["email"],location:snapshot.data[index].data["location"],name:snapshot.data[index].data["name"],theme:snapshot.data[index].data["theme"],eventID: snapshot.data[index].data.documentID);
+                                    final event= EventDetails(date:snapshot.data[index].data["startdate"],desc:snapshot.data[index].data["description"],organizer:snapshot.data[index].data["email"],location:snapshot.data[index].data["location"],name:snapshot.data[index].data["name"],theme:snapshot.data[index].data["theme"],eventID: snapshot.data[index].data.documentID);
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(event_name: event,)));
                                     //change tha class name according to the class name in pages/pagename.dart file
                                   },

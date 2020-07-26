@@ -35,15 +35,14 @@ class _RegistrationState extends State<Registration>
   final String event_name;
   final myController = TextEditingController();
   _RegistrationState({this.event_name});
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context)
   {
     return Scaffold
       (
-      appBar: AppBar
-        (
-          title: Text("Registration Form")
-      ),
+      key: _scaffoldKey,
+      appBar: header(context,strTitle: "Registration Form",disappearBackButton: true),
       body: Center
         (
         child: Column
@@ -88,7 +87,8 @@ class _RegistrationState extends State<Registration>
                   Firestore.instance.collection("events").document(event_name).updateData({
                     "pending" : FieldValue.arrayUnion([{"description":myController.text,"userid":"123232","username":"loyal"}])
                   }).then((_) {
-                    print("success!");
+                    SnackBar snackBar = SnackBar(content: Text("Successfully Submitted"),);
+                    _scaffoldKey.currentState.showSnackBar(snackBar);
                   });
                 },
               ),

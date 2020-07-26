@@ -127,24 +127,14 @@ class _HomePageState extends State<HomePage> {
               title: Text("My Active Events"),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents(userProfileId:currentUser.id)));
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
               },
 
             ),
-            ListTile(
-              title: Text("My Past Events"),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard(userProfileId:currentUser.id)));
-                //Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
-                //change tha class name according to the class name in pages/pagename.dart file
-              },
-            ),
+
             ListTile(
               title: Text("All Events"),
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>AllEvents(userProfileId:currentUser.id)));
-                //Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
-                //change tha class name according to the class name in pages/pagename.dart file
               },
             ),
             ListTile(
