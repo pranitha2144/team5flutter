@@ -8,10 +8,12 @@ AppBar header(context,{bool isAppTitle=false,String strTitle,disappearBackButton
       color: Colors.white,
     ),
     automaticallyImplyLeading: disappearBackButton? false : true,
+    leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: ()=>Navigator.pop(context),),
     title: Text(
       isAppTitle ? "Togetherness":strTitle,
       style: TextStyle(
         color: Colors.white,
+        fontFamily: isAppTitle ? "Signatra" : "",
         fontSize: isAppTitle ? 45.0:22.0,
       ),
       overflow: TextOverflow.ellipsis,

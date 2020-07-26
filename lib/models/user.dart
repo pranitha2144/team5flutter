@@ -6,7 +6,7 @@ class User {
   final String username;
   final String url;
   final String email;
-  final int age;
+  final String age;
   final String phoneno;
   final String location;
 

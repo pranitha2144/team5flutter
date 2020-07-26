@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         dialogBackgroundColor: Colors.black,
         primarySwatch: Colors.grey,
         cardColor: Colors.white70,
+        accentColor: Colors.black,
       ),
       home: HomePage(),
     );
