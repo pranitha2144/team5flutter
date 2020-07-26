@@ -97,8 +97,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           TextFormField(
                             style: TextStyle(color: Colors.black),
                             validator: (val){
+                              String pattern = r'(^[0-9]*$)';
+                              RegExp regExp = new RegExp(pattern);
                               if(val.isEmpty){
                                 return "Age cannot be empty.";
+                              }
+                              else if(!regExp.hasMatch(val)){
+                                return "Age cannot contain characters other than numbers.";
                               }
                               else{
                                 return null;
@@ -127,13 +132,17 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           TextFormField(
                             style: TextStyle(color: Colors.black),
                             validator: (val){
+                              String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+                              RegExp regExp = new RegExp(pattern);
                               if(val.isEmpty){
                                 return "Phone number required.";
                               }
-                              else{
-                                return null;
+                              else if (!regExp.hasMatch(val)) {
+                                  return 'Please enter valid mobile number';
                               }
-                            },
+                              else
+                                  return null;
+                              },
                             onSaved: (val)=>phoneno=val,
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
