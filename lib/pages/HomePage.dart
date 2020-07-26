@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:togetherness/models/user.dart';
 import 'package:togetherness/pages/ActiveEventsPage.dart';
+import 'package:togetherness/pages/AllEvents.dart';
 import 'package:togetherness/pages/CreateAccountPage.dart';
 import 'package:togetherness/pages/DashboardPage.dart';
 
@@ -125,13 +126,15 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: Text("My Active Events"),
               onTap: (){
-               // Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents(userProfileId:currentUser.id)));
+                // Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
               },
 
             ),
             ListTile(
-              title: Text("My Registered Events"),
+              title: Text("My Past Events"),
               onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard(userProfileId:currentUser.id)));
                 //Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
                 //change tha class name according to the class name in pages/pagename.dart file
               },
@@ -139,6 +142,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: Text("All Events"),
               onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>AllEvents(userProfileId:currentUser.id)));
                 //Navigator.push(context, MaterialPageRoute(builder: (context)=>ActiveEvents()));
                 //change tha class name according to the class name in pages/pagename.dart file
               },
