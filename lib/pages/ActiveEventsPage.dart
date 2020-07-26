@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:togetherness/pages/HomePage.dart';
 import 'package:togetherness/widgets/HeaderWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:togetherness/widgets/ProgressWidget.dart';
 
 
 
@@ -31,12 +32,12 @@ class EventList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('users').where('userid',isEqualTo: "104938209637048378257").snapshots(),
+      stream: Firestore.instance.collection('users').where('userid',isEqualTo: userId).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError)
           return new Text('Error: ${snapshot.error}');
         switch (snapshot.connectionState) {
-          case ConnectionState.waiting: return new Text('Loading...');
+          case ConnectionState.waiting: return circularProgress();
           default:
             return ListView(
                 children: snapshot.data.documents.map((DocumentSnapshot document) {
@@ -69,8 +70,6 @@ class EventList extends StatelessWidget {
                             new Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children :<Widget>[
-
-
                                 ]
                             ),
 

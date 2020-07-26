@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:togetherness/widgets/HeaderWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:togetherness/pages/RegistrationForm.dart';
+import 'package:togetherness/widgets/ProgressWidget.dart';
 class AllEvents extends StatefulWidget {
   final String userProfileId;
   AllEvents({this.userProfileId});
@@ -37,9 +38,7 @@ class _AllEventsState extends State<AllEvents> {
         child: FutureBuilder(future:getEvents() ,builder: (_, snapshot){
           if (snapshot.connectionState==ConnectionState.waiting)
           {
-            return Center(
-              child: Text("Loading..."),
-            );
+            return circularProgress();
           }
           else
           {
