@@ -9,7 +9,7 @@ class _ActiveEventsState extends State<ActiveEvents> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header(context,strTitle: "My Dashboard"), // to hide backbutton send disappearbackbutton parameter as TRUE
+      appBar: header(context,strTitle: "Active Events"), // to hide backbutton send disappearbackbutton parameter as TRUE
     );
   }
 }
