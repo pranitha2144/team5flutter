@@ -33,7 +33,7 @@ class EventList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: usersReference.where('id',isEqualTo: userId).snapshots(),
+      stream: usersReference.where('userid',isEqualTo: userId).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError)
           return new Text('Error: ${snapshot.error}');
