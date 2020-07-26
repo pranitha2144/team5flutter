@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,10 @@ import 'package:togetherness/pages/DashboardPage.dart';
 final GoogleSignIn gSignIn = GoogleSignIn();
 final usersReference = Firestore.instance.collection("users");
 final DateTime timestamp = DateTime.now();
+final int avgRating=0;
+final int totalEvents =0;
+final registered_events = [];
+final approved_events = [];
 User currentUser ;
 class HomePage extends StatefulWidget {
   @override
@@ -70,6 +76,8 @@ class _HomePageState extends State<HomePage> {
             "age":data["age"],
             "phoneno":data["phoneno"],
             "location":data["location"],
+            "approved_events":approved_events,
+            "registered_events":registered_events,
             "timestamp": timestamp,
           });
 
@@ -124,7 +132,7 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: Text("My Dashboard"),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Dashboard(userProfileId:currentUser.id)));
               },
             ),
             ListTile(
@@ -181,7 +189,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(isSignedIn);
     if(isSignedIn){
       return buildHomeScreen();
     }

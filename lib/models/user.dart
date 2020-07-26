@@ -9,6 +9,8 @@ class User {
   final String age;
   final String phoneno;
   final String location;
+  final registered_events =[];
+  final approved_events =[];
 
   User({
     this.id,
@@ -30,7 +32,7 @@ class User {
       profileName: doc['profileName'],
       age:doc['age'],
       phoneno: doc['phoneno'],
-      location: doc['location']
+      location: doc['location'],
     );
   }
 }
