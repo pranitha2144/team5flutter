@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:togetherness/models/user.dart';
 import 'package:togetherness/pages/HomePage.dart';
 import 'package:togetherness/widgets/HeaderWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -32,7 +33,7 @@ class EventList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('users').where('userid',isEqualTo: userId).snapshots(),
+      stream: usersReference.where('id',isEqualTo: userId).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError)
           return new Text('Error: ${snapshot.error}');
@@ -67,14 +68,7 @@ class EventList extends StatelessWidget {
                               ),
                             ),
                             SizedBox(height:10.0 ,),
-                            new Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children :<Widget>[
-                                ]
-                            ),
 
-
-                            SizedBox(height:10.0 ,),
 
                           ],
                         ),

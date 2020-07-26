@@ -83,9 +83,9 @@ class _RegistrationState extends State<Registration>
                 color:Colors.yellow,
                 onPressed:() {
                   print(Text(myController.text));
-                  print(event_name);
+                  //print(event_name);
                   Firestore.instance.collection("events").document(event_name).updateData({
-                    "pending" : FieldValue.arrayUnion([{"description":myController.text,"userid":"123232","username":"loyal"}])
+                    "pending" : FieldValue.arrayUnion([{"description":myController.text,"userid":"104938209637048378257","username":"Maggie"}])
                   }).then((_) {
                     SnackBar snackBar = SnackBar(content: Text("Successfully Submitted"),);
                     _scaffoldKey.currentState.showSnackBar(snackBar);

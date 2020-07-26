@@ -103,9 +103,8 @@ class _AllEventsState extends State<AllEvents> {
                                   child:Text('Register'),
                                   color:Colors.yellow,
                                   onPressed:() {
-                                    final event= EventDetails(date:snapshot.data[index].data["startdate"],desc:snapshot.data[index].data["description"],organizer:snapshot.data[index].data["email"],location:snapshot.data[index].data["location"],name:snapshot.data[index].data["name"],theme:snapshot.data[index].data["theme"],eventID: snapshot.data[index].data.documentID);
+                                    final event= EventDetails(date:snapshot.data[index].data["startdate"],desc:snapshot.data[index].data["description"],organizer:snapshot.data[index].data["email"],location:snapshot.data[index].data["location"],name:snapshot.data[index].data["name"],theme:snapshot.data[index].data["theme"]);
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(event_name: event,)));
-                                    //change tha class name according to the class name in pages/pagename.dart file
                                   },
                                 )
                             )
