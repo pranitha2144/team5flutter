@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ final DateTime timestamp = DateTime.now();
 final int avgRating=0;
 final int totalEvents =0;
 final registered_events = [];
-final approved_events = [];
+final approved_events = [{"name":"","rating":0}];
 User currentUser ;
 class HomePage extends StatefulWidget {
   @override
@@ -103,7 +104,20 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           children: <Widget>[
             DrawerHeader(
-              child: Text(currentUser.username),
+              child:Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(currentUser.username),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: CircleAvatar(
+                      radius: 45.0,
+                      backgroundColor: Colors.grey,
+                      backgroundImage: CachedNetworkImageProvider(currentUser.url),
+                    ),
+                  ),
+                ],
+              ),
               decoration: BoxDecoration(
                 color: Colors.white12,
               ),

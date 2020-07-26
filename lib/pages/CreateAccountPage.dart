@@ -186,8 +186,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                               ),
                             ),
                             Container(
-                              width:50.0,
-                              height: 30.0,
                               child: RaisedButton.icon(
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                                 color: Colors.green,
@@ -204,8 +202,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   GestureDetector(
                     onTap: submitDetails,
                     child: Container(
-                      height: 55.0,
-                      width: 360.0,
                       decoration: BoxDecoration(
                         color: Colors.green,
                         borderRadius: BorderRadius.circular(8.0),
